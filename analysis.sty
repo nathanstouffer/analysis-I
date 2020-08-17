@@ -1,0 +1,46 @@
+% This package defines commands and a template for homeworks in
+% Computer Science Theory (CSCI 338 at Montana State University)
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{theory}[2020/01/13 Custom HW Template Package]
+
+\RequirePackage{titlesec}
+\RequirePackage{enumitem}
+\RequirePackage{amssymb,amsmath}
+\RequirePackage{times,psfrag,epsf,epsfig,graphics,graphicx}
+\RequirePackage{algorithm}
+\RequirePackage{algorithmic}
+\RequirePackage{tikz}
+
+% Options would go in this spot
+%\DeclareOption...
+
+%\ProcessOptions
+
+\titleformat{\subsection}[runin]
+{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+
+\newcommand{\coverpage}[1] {
+	\title{M 383: Assignment~#1}
+	\author{Nathan Stouffer}
+	\date{}
+	\maketitle
+}
+
+\newcommand{\exercise}[1] {
+	\newpage
+	\section*{Exercise #1}
+}
+
+\newcommand{\solution}[1]{
+	\noindent \textit{Solution. } #1 \\
+}
+
+%% useful commands for short hand
+
+% command for spacing out paragraphs in proofs
+\newcommand{\parspace}{\newline\newline\noindent}
+
+% symbol for the positive integers
+\newcommand{\zpos}{\mathbb{Z}^+}
+\endinput
