@@ -2,8 +2,9 @@
 % Computer Science Theory (CSCI 338 at Montana State University)
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{theory}[2020/01/13 Custom HW Template Package]
+\ProvidesPackage{analysis}[2020/08/17 Custom HW Template Package]
 
+\RequirePackage[margin=1in]{geometry}
 \RequirePackage{titlesec}
 \RequirePackage{enumitem}
 \RequirePackage{amssymb,amsmath}
@@ -27,20 +28,36 @@
 	\maketitle
 }
 
-\newcommand{\exercise}[1] {
-	\newpage
-	\section*{Exercise #1}
+\newcommand{\header}[2] {
+	\section*{Section #1 --- Exercise #2}
 }
 
-\newcommand{\solution}[1]{
-	\noindent \textit{Solution. } #1 \\
+\newcommand{\problem}[1]{
+	\noindent\textit{Problem.} #1 \\\\
 }
+
+\newcommand{\proof}[1]{
+	\noindent\textit{Proof.} #1
+}
+
+%% environment for an exercise
+
+\newenvironment{exercise}[2]
+	{
+		\newpage
+		\header{#1}{#2}
+	}
+	{
+
+	}
 
 %% useful commands for short hand
 
 % command for spacing out paragraphs in proofs
 \newcommand{\parspace}{\newline\newline\noindent}
 
-% symbol for the positive integers
-\newcommand{\zpos}{\mathbb{Z}^+}
+\newcommand{\N}{\mathbb{N}}								% symbol for the natural numbers
+\newcommand{\Z}{\mathbb{Z}}								% symbol for the integers
+\newcommand{\Q}{\mathbb{Q}}								% symbol for the rationals
+
 \endinput
