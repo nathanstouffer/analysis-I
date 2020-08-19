@@ -1,6 +1,6 @@
 \documentclass[11pt]{article}
 
-\usepackage{analysis}
+\usepackage{../analysis}
 
 \begin{document}
 
@@ -43,12 +43,29 @@
         Prove that the rational numbers are countable.
     }
     \proof{
-        We can prove that the rational numbers are countable by providing a one-to-one correspondence from $\N$ to $\Q$.
-        Before showing that $\Q$ is countable, we give some notation.
+        We can prove that the rational numbers are countable by listing all the rationals.
+        Before doing so, let's set up some notation.
         For a given $ k \in \N $, let $ Q_k = \{ \pm j/k \mid j \in \N \} $.
         We then say that $ U = \bigcup _{k=1} ^{\infty}  Q_k $.
-        Then we can write the set of rational numbers as $\Q = \{ 0 \} \bigcup U $. \parspace
-        Note that each $Q_k$ is countable. % give the correspondence (f(j) = something with floor or ceil?)
+        Then the set of rational numbers is $\Q = \{ 0 \} \bigcup U $. \parspace
+        Note that each $Q_k$ is countable since we can list all of its elements as
+        $$ \dfrac{1}{k}, \dfrac{-1}{k}, \dfrac{2}{k}, \dfrac{-2}{k}, \dfrac{3}{k}, \dfrac{-3}{k}, \dfrac{4}{k}, \dfrac{-4}{k}, \cdot \cdot \cdot $$
+        We can then form an infinite table with $Q_k$ as the $k^{th}$ row (we denote the $i^{th}$ element of $Q_k$ as $q_{ki}$).
+        \begin{center}
+            \begin{tabular}{c c c c c}
+                $q_{11}$ & $q_{12}$ & $q_{13}$ & $ \cdot \cdot \cdot $ \\
+                $q_{21}$ & $q_{22}$ & $q_{23}$ & $ \cdot \cdot \cdot $ \\
+                $q_{31}$ & $q_{32}$ & $q_{33}$ & $ \cdot \cdot \cdot $ \\
+                $\cdot$  & $\cdot$                                     \\
+                $\cdot$  &          & $\cdot$                          \\
+                $\cdot$  &          &          & $\cdot$
+            \end{tabular}
+        \end{center}
+        We can then list all the elements of $\Q$ by reading the above table diagonally and ignoring any duplicate elements (seperately, we must remember $0$ at the beginning):
+        $$ L_\Q = 0, q_{11}, q_{21}, q_{12}, q_{31}, q_{22}, q_{23}, \triplecdot $$
+        As a final step, all the duplicates in $L_\Q$ must be removed.
+        Then $\N$ has a one-to-one correspondence with $L_\Q$.
+        So, we have shown that $L_\Q$ is countable.
     }
 \end{exercise}
 
