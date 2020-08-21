@@ -43,7 +43,8 @@
         Prove that the rational numbers are countable.
     }
     \proof{
-        We can prove that the rational numbers are countable by listing all the rationals.
+        We must show that the rational numbers are countable.
+        We can do so by listing all the rationals.
         Before doing so, let's set up some notation.
         For a given $ k \in \N $, let $ Q_k = \{ \pm j/k \mid j \in \N \} $.
         We then say that $ U = \bigcup _{k=1} ^{\infty}  Q_k $.
@@ -73,14 +74,32 @@
 
 \begin{exercise}{1.2.3}{4}
     \problem{Show that if a countable subset is removed from an uncountable set, the remainder is still uncountable.}
-    \proof{}
+    \proof{
+        We begin by giving the problem some notation.
+        Given an uncountable set $A$ and a countable subset $B \subset A$, we must show that $A \setminus B$ is uncountable. \parspace
+        Towards a contradiction, let's assume that we have an uncountable set $A$ and a countable subset $B \subset A$ such that $A \setminus B$ is countable.
+        Let $C = A \setminus B$. Since $B$ and $C$ are both countable, we can list all of their elements: $b_1, b_2, b_3, ...$ and $c_1, c_2, c_3, ...$.
+        From here, we can also deduce that $B \bigcup C$ is countable because every element of $B \bigcup C$ can be listed: $b_1, c_1, b_2, c_2, b_3, c_3, ...$ \parspace
+        Yet, $B \bigcup C = A$ and we know $A$ to be uncountable.
+        So, we have reached a contradiction ($A$ cannot be both countable and uncountable). \parspace
+        Since we reached a contradiction, we must have incorrectly assumed that $A \setminus B$ could be countable.
+        Therefore, $A \setminus B$ must be uncountable and we have shown that removing a countable set from an uncoubtable set must always result in an uncountable set.
+    }
 \end{exercise}
 
 % hw problem 5 -----------------------------------------------------------------
 
 \begin{exercise}{1.2.3}{5}
     \problem{Let $ A_1, A_2, A_3, ... $ be countable sets, and let their Cartesian product $ A_1 \times A_2 \times A_3 \times \cdot \cdot \cdot $ be defined to be the set of all sequences $( a_1, a_2, ... )$ where $ a_k $ is an element of $ A_k $. Prove that the Cartesian product is uncountable. Show that the same conclusion holds if each of the sets $ A_1, A_2, ... $ has at least two elements.}
-    \proof{}
+    \proof{
+        We must show that the Caresian product of a countable number of countable sets is uncountable.
+        Towards a contradiction, let's assume not.
+        That is, let's assume that $P = A_1 \times A_2 \times A_3 \times \triplecdot$ is a countable set. \parspace
+        Since $P$ is countable, there exists a bijective map $f: \N \longrightarrow P$.
+        For a given $n \in \N$, we say $f(n) = ( a_1^n, a_2^n, a_3^n, ... )$.
+        To get our contradiction, we will construct an element $p = (p_1, p_2, p_3, ...) \in P$ such that $p \notin im(f)$.
+        We choose $p_k$ such that $p_k \in A_k$ and $p_k \neq a_k^k$.
+    }
 \end{exercise}
 
 \end{document}
