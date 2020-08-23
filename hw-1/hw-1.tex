@@ -62,9 +62,9 @@
                 $\cdot$  &          &          & $\cdot$
             \end{tabular}
         \end{center}
-        We can then list all the elements of $\Q$ by reading the above table diagonally and ignoring any duplicate elements (seperately, we must remember $0$ at the beginning):
+        We can then list all the elements of $\Q$.
+        We start with $0$, then we read the above table diagonally and ignore any duplicated elements:
         $$ L_\Q = 0, q_{11}, q_{21}, q_{12}, q_{31}, q_{22}, q_{23}, \triplecdot $$
-        As a final step, all the duplicates in $L_\Q$ must be removed.
         Then $\N$ has a one-to-one correspondence with $L_\Q$.
         So, we have shown that $L_\Q$ is countable.
     }
@@ -73,7 +73,9 @@
 % hw problem 4 -----------------------------------------------------------------
 
 \begin{exercise}{1.2.3}{4}
-    \problem{Show that if a countable subset is removed from an uncountable set, the remainder is still uncountable.}
+    \problem{
+        Show that if a countable subset is removed from an uncountable set, the remainder is still uncountable.
+    }
     \proof{
         We begin by giving the problem some notation.
         Given an uncountable set $A$ and a countable subset $B \subset A$, we must show that $A \setminus B$ is uncountable. \parspace
@@ -81,7 +83,7 @@
         Let $C = A \setminus B$. Since $B$ and $C$ are both countable, we can list all of their elements: $b_1, b_2, b_3, ...$ and $c_1, c_2, c_3, ...$.
         From here, we can also deduce that $B \bigcup C$ is countable because every element of $B \bigcup C$ can be listed: $b_1, c_1, b_2, c_2, b_3, c_3, ...$ \parspace
         Yet, $B \bigcup C = A$ and we know $A$ to be uncountable.
-        So, we have reached a contradiction ($A$ cannot be both countable and uncountable). \parspace
+        So, we have reached a contradiction since $A$ cannot be both countable and uncountable. \parspace
         Since we reached a contradiction, we must have incorrectly assumed that $A \setminus B$ could be countable.
         Therefore, $A \setminus B$ must be uncountable and we have shown that removing a countable set from an uncoubtable set must always result in an uncountable set.
     }
@@ -90,15 +92,30 @@
 % hw problem 5 -----------------------------------------------------------------
 
 \begin{exercise}{1.2.3}{5}
-    \problem{Let $ A_1, A_2, A_3, ... $ be countable sets, and let their Cartesian product $ A_1 \times A_2 \times A_3 \times \cdot \cdot \cdot $ be defined to be the set of all sequences $( a_1, a_2, ... )$ where $ a_k $ is an element of $ A_k $. Prove that the Cartesian product is uncountable. Show that the same conclusion holds if each of the sets $ A_1, A_2, ... $ has at least two elements.}
+    \problem{
+        Let $ A_1, A_2, A_3, ... $ be countable sets, and let their Cartesian product $ A_1 \times A_2 \times A_3 \times \cdot \cdot \cdot $ be defined to be the set of all sequences $( a_1, a_2, ... )$ where $ a_k $ is an element of $ A_k $.
+        Prove that the Cartesian product is uncountable.
+        Show that the same conclusion holds if each of the sets $ A_1, A_2, ... $ has at least two elements.
+    }
     \proof{
         We must show that the Caresian product of a countable number of countable sets is uncountable.
-        Towards a contradiction, let's assume not.
-        That is, let's assume that $P = A_1 \times A_2 \times A_3 \times \triplecdot$ is a countable set. \parspace
+        Towards a contradiction, let's assume that such a Cartesian product is countalbe.
+        For notation, we assume that $P = A_1 \times A_2 \times A_3 \times \triplecdot$ is a countable set. \parspace
         Since $P$ is countable, there exists a bijective map $f: \N \longrightarrow P$.
-        For a given $n \in \N$, we say $f(n) = ( a_1^n, a_2^n, a_3^n, ... )$.
-        To get our contradiction, we will construct an element $p = (p_1, p_2, p_3, ...) \in P$ such that $p \notin im(f)$.
-        We choose $p_k$ such that $p_k \in A_k$ and $p_k \neq a_k^k$.
+        For a given $n \in \N$, we say $f(n) = ( a_1^n, a_2^n, a_3^n, ... ) \in P$.
+        To get our contradiction, we will construct an element $p = (p_1, p_2, p_3, ...) \in P$ such that $p \notin im(f)$. \parspace
+        When constructing $p$, we choose $p_k$ such that $p_k \in A_k$ and $p_k \neq a_k^k$.
+        We choose $p_k \in A_k$ so that $p$ is an element of $P$ and we require that $p_k \neq a_k^k$ so that there is no $n \in \N$ such that $f(n) = p$.
+        We know that such a $p_k \in A_k$ exists because $A_k$ has countably many elements.
+        Since there is no $n$ such that $f(n) = p$, the element $p \notin im(f)$.
+        This means that $f$ is not surjective. \parspace
+        Yet we assumed that $f$ is surjective so we have reached the contradiction that $f$ must be both surjective and not surjective.
+        Since we reached a contradiction, we must have incorrectly assumed that $P$ is countable.
+        So we have shown that the Cartesian product of a countable number of countable sets is uncountable. \parspace
+        We can make our result even stronger.
+        Our selection of $p_k$ only requires that there is a single element $a_k' \in A_k$ such that $a_k' \neq a_k^k$.
+        So the proof holds so long as $\{ a_k^k, a_k' \} \subset A_k$.
+        Thus, each $A_k$ needs only two elements.
     }
 \end{exercise}
 
