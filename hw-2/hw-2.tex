@@ -1,0 +1,103 @@
+\documentclass[11pt]{article}
+
+\usepackage{../analysis}
+
+\begin{document}
+
+\coverpage{2}
+
+% hw problem 1 -----------------------------------------------------------------
+
+\begin{exercise}{1}{}
+    \problem{
+        Prove that between any two distinct raional numbers there are infinitely many other rationals.
+    }
+    \proof{
+        We must show that between any two distinct rationals there exist infinitely many other rationals.
+        We will prove this by contradiction, assume that there exist two distinct rational numbers $a,b$ such that there are finitely many rationals between $a$ and $b$.
+        Without loss of generality, assume $ a < b $. \parspace
+        We define the set $ \Q_{ab} := \{ q \in \Q \mid a < q \leq b \} $.
+        Since there are finitely many rationals between $a$ and $b$, $\Q_{ab}$ has a finite number of elements.
+        Any finite set of rationals has a minimum, so pick $p'/q'$ to be an expression of the rational number $ min \{ \Q_{ab} \} $.
+        Since $p'/q'$ is the smallest element of $\Q_{ab}$, there are no rationals between $a$ and $p'/q'$.
+        We can also conclude that for $p/q$ (some expression of $a$), $ p/q < p'/q' \iff pq' < p'q $. \parspace
+        From here, we construct
+        $$ x = \dfrac{pq' + p'q}{2qq'}$$
+        Certainly $x$ must be rational by closure of integers under addition and multiplication.
+        Since $x$ is rational, it cannot be between $p/q$ and $p'/q'$ so $x$ must satisfy one of the following cases. \parspace
+        Case $x \leq p/q$:
+        $$ \dfrac{pq' + p'q}{2qq'} \leq p/q \iff pq' + p'q \leq 2pq' \iff p'q \leq pq' \iff pq' \geq p'q $$
+        which is a contradiction since $pq' < p'q$. \parspace
+        Case $x \geq p'/q'$:
+        $$ \dfrac{pq' + p'q}{2qq'} \geq p'/q' \iff pq' + p'q \geq 2p'q \iff pq' \geq p'q $$
+        which is a contradiction since $pq' < p'q$. \parspace
+        Since both cases for $x$ lead to a contradiction, we must have incorrectly assumed that there exist distinct rationals with finitely many rationals between them.
+        Therefore, it must be true that between any two distinct rationals there are infinitely many other rationals.
+    }
+\end{exercise}
+
+% hw problem 2 -----------------------------------------------------------------
+
+\begin{exercise}{2.1.3}{3}
+    \problem{
+        What kinds of real numbers are representable by Cauchy sequences of integers?
+    }
+    \proof{
+        We must say what types of real numbers are representable by Cauchy sequences of integers.
+        Let $x_n = x_1, x_2, ... $ be a Cauchy sequence of integers.
+        Since $x_n$ is Cauchy, it must be true that $ \forall n \in \N, \exists m \in \N \text{ such that } \forall j,k \geq m \hspace{0.5em} |x_j - x_k| \leq 1/n $. \parspace
+        Choose $n = 2$, then $1/n=1/2$.
+        We must also have $x_j$ (an integer) and $| x_j - x_k | \leq 1/2$, but the only integer value of $x_k$ that satisifes $| x_j - x_k | \leq 1/2$ is $x_k = x_j$.
+        So, the sequence must be have a constant integer value $x_j$ beyond the $m^{th}$ term.
+        Then $ x_n \rightarrow x_j $.
+        Since $x_j$ is an integer, a Cauchy sequence of integers can only represent an integer.
+    }
+\end{exercise}
+
+% hw problem 3 -----------------------------------------------------------------
+
+\begin{exercise}{2.1.3}{5}
+    \problem{
+        Prove that if a Cauchy sequence $ x_1, x_2, ... $ of rationals is modified by changing a finite number of terms, the result is an equivalent Cauchy sequence.
+    }
+    \proof{
+        We must show that modifying a finite number of terms in a Cauchy sequence of rationals results in an equivalent Cauchy sequence.
+        Suppose we have a Cauchy sequence of rationals $ x_n = x_1, x_2, ...$ and we modify a finite number of terms to produce another sequence $x'_n = x'_1, x'_2, ...$
+        Is $x'_n$ Cauchy? \parspace
+        Since we modified a finite number of terms, let $x'_l$ be the last term in $x'_n$ such that $x_l \neq x'_l$.
+        Let $m(n)$ be the index of the term in $x_n$ that satisfies the Cauchy criterion for error $1/n$.
+        For $x'_n$, we say that $m'(n) = max \{ m(n), l+1 \}$ to provide an index that satisfies the Cauchy criterion for error $1/n$.
+        So we know that $x'_n$ is Cauchy. \parspace
+        But are $x_n$ and $x'_n$ equivalent?
+        The sequences $x_n$ and $x'_n$ are equivalent if $\forall n \in \N, \exists m \in \N \text{ such that } \forall j \geq m \hspace{0.5em} |x_j - x'_j| \leq 1/n $.
+        We have already identified that $x'_l$ is the last term in $x'_n$ that differs from $x_n$.
+        So, regardless of what $n$ is chosen, we select $m = l + 1$.
+        Then, $x_j = x'_j \implies |x_j - x'_j| = |x_j - x'_j| = |0| = 0 $ which is certainly less than $1/n$.
+        So the sequences $x_n$ and $x'_n$ are equivalent. \parspace
+        Therefore, modifying a finite number of terms in a Cauchy sequence of rationals results in an equivalent Cauchy sequence.
+    }
+\end{exercise}
+
+% hw problem 4 -----------------------------------------------------------------
+
+\begin{exercise}{2.1.3}{8}
+    \problem{
+        Can a Cauchy sequence of positive rational numbers be equivalent to a Cauchy sequence of negative rational numbers?
+    }
+    \proof{
+
+    }
+\end{exercise}
+
+% hw problem 5 -----------------------------------------------------------------
+
+\begin{exercise}{2.1.3}{9}
+    \problem{
+        Show that if $ x_1, x_2, ... $ is a Cuachy sequence of rational numbers there exists a positive integer $N$ such that $ x_j \leq N $ for all $j$.
+    }
+    \proof{
+
+    }
+\end{exercise}
+
+\end{document}
