@@ -112,8 +112,9 @@
         Pick $n = 1$ and let $m$ be an index that satisfies the Cauchy criterion for $x_n$.
         Then define the finite set $L := \{ x_k \mid k < m \}$.
         That is, the set of sequence elements prior to $x_m$.
+        Let $l = \lceil max \{ L \} \rceil$.
         Sequence elements following (and including) $x_m$ must be smaller than $\lceil x_m + 1 \rceil$.
-        Then we can take $N = max \{ L, \lceil x_m + 1 \rceil \}$, which must be larger than every term in the sequence. \parspace
+        Then we can take $N = max \{ l, \lceil x_m + 1 \rceil \}$, which must be larger than every term in the sequence. \parspace
         So we have shown the existence of a natural number larger than every term in a Cauchy sequence.
     }
 \end{exercise}
