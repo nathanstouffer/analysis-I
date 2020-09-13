@@ -41,7 +41,16 @@
         Write out a proof that $lim_{k \to \infty} (x_k + y_k) = x + y$ if $ lim_{k \to \infty} x_k = x$ and $lim_{k \to \infty} y_k = y$ for sequences of real numbers.
     }
     \proof{
-
+        We want to show (for sequences of real numbers) that the limit of a sum is the same as the sum of the limits.
+        Given that $ lim_{k \to \infty} x_k = x$ and $lim_{k \to \infty} y_k = y $, we want to show that $\{ x_k + y_k \}$ satisfies the Cauchy criterion and converges to $x + y$. \parspace
+        Saying that $\{ x_k \}$ and $\{ y_k \}$ have limits is equivalent to saying $\{ x_k \}$ and $\{ y_k \}$ are Cauchy.
+        We also know the sum of two Cauchy sequences to be Cauchy, so certainly $\{ x_k + y_k \}$ is Cauchy. \parspace
+        But what is the limit of $\{ x_k + y_k \}$?
+        Let's begin by noting that $lim_{k \to \infty} x_k = x \implies $ $\forall n, \exists m_a$ such that $|x_a - x| \leq 1/2n$ for all $a \geq m_a$.
+        Similarly $lim_{k \to \infty} y_k = y \implies $ $\forall n, \exists m_b$ such that $|y_b - y| \leq 1/2n$ for all $b \geq m_b$.
+        Choose $k = max\{ a, b \} $.
+        Then $| (x_k + y_k) - (x + y)| = |(x_k - x) + (y_k - y)| \leq 1/2n + 1/2n = 1/n$ which satisfies the definition of a limit.
+        Thus the limit of a sum is equal the sum of the limits.
     }
 \end{exercise}
 
@@ -53,10 +62,22 @@
     }
     \proof{
         We must show that $y_1, y_2, ...$ converges.
-        To this end, we introduce the following result: $1/n = \sum_{k=n}^\infty 1/2^k$ for all natural numbers.
+        To this end, we introduce the following result: $1/2^n = \sum_{k=n+1}^\infty 1/2^k$.
         Let's now prove this result.
-        First note that $x_{k+1} = 1/2 * x_k$.
-        Then we have 
+        First note that for some natural number $a$, $1/2^{a+1} = 1/2 * 1/2^a$.
+        Then for any $a$, we have
+        $$1/2^a + 1/2^{a+1} + 1/2^{a+2} + \triplecdot = 1/2^a + 1/2*1/2^a + 1/2 * 1/2^{a+1} + \triplecdot = 1/2^a + 1/2 * (1/2^a + 1/2^{a+1} + \triplecdot) $$
+        which implies that
+        $$1/2^a = 1/2 * (1/2^a + 1/2^{a+1} + \triplecdot) = 1/2 * 1/2^a + 1/2 * 1/2^{a+1} + \triplecdot = 1/2^{a+1} + 1/2^{a+2} + \triplecdot = \sum_{k=a+1}^\infty 1/2^k $$
+        Now to show that $y_1, y_2, ...$ converges, we will show that $y_1, y_2, ...$ is Cauchy.
+        So, given a natural number $n$, we must show the existence of an index $m$ such that $|y_j - y_k| \leq 1/n$ for all $j,k \geq m$.
+        For any index $m$, we can maximize $|y_j - y_k|$ by choosing the largest possible $y_j$ and the smallest possible $y_k$.
+        Because $1/2^n = \sum_{k=n+1}^\infty 1/2^k$ and $x_n \leq 1/2^n$, we can say that the largest $y_j$ could be is $y_m + 1/2^{m}$ and the smallest $y_k$ could be is $y_m - 1/2^m$.
+        Then
+        $$|y_j - y_k| \leq |(y_m + 1/2^{m}) - (y_k - 1/2^{m})| = |2/2^m| = 1/2^{m-1} $$
+        Choosing $m = n$, we can say that $1/2^{m-1} = 1/2^{n-1} \leq 1/n$ for all $n$.
+        So there exists an index $m$ such that $|y_j - y_k| \leq n$ for all $j,k \geq m$.
+        Thus $y_1, y_2, ...$ satisfies the Cauchy criterion and must also converge.
     }
 \end{exercise}
 
