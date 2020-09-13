@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+
+\usepackage{../analysis}
+
+\begin{document}
+
+\coverpage{3}
+
+% hw problem 1 -----------------------------------------------------------------
+
+\begin{exercise}{2.2.4}{3}
+    \problem{
+        If $x$ is a real number, show that there exists a Cauchy sequence of rationals $x_1, x_2, ...$ representing $x$ such that $x_n < x$ for all $n$.
+    }
+    \proof{
+
+    }
+\end{exercise}
+
+% hw problem 2 -----------------------------------------------------------------
+
+\begin{exercise}{2.2.4}{7}
+    \problem{
+        Prove that $|x - y| \geq |x| - |y|$ for any real numbers $x$ and $y$.
+    }
+    \proof{
+        We must show that $|x - y| \geq |x| - |y|$ holds for all real numbers $x$ and $y$.
+        We take $|x+y| \leq |x| + |y|$ (the triangle inequality) to be true.
+        Then let $x$ and $y$ be any real numbers.
+        Certainly it is true that $|x| = |x - y + y|$ since $\R$ is an ordered field.
+        Also, by the triangle inequality, $|x - y + y| \leq |x-y| + |y|$.
+        Since $|x - y + y| = |x|$, we can say that $|x-y| + |y| \geq |x|$ which we can reorder to be $|x-y| \geq |x| - |y|$.
+        So we have shown the desired inequality for all real numbers $x$ and $y$.
+    }
+\end{exercise}
+
+% hw problem 3 -----------------------------------------------------------------
+
+\begin{exercise}{2.3.3}{1}
+    \problem{
+        Write out a proof that $lim_{k \to \infty} (x_k + y_k) = x + y$ if $ lim_{k \to \infty} x_k = x$ and $lim_{k \to \infty} y_k = y$ for sequences of real numbers.
+    }
+    \proof{
+
+    }
+\end{exercise}
+
+% hw problem 4 -----------------------------------------------------------------
+
+\begin{exercise}{2.3.3}{3}
+    \problem{
+        Let $x_1, x_2, ...$ be a sequence of real numbers such that $|x_n| \leq 1/2^n$, and set $y_n = x_1 + x_2 + \triplecdot + x_n$. Show that the sequence $y_1, y_2, ...$ converges.
+    }
+    \proof{
+        We must show that $y_1, y_2, ...$ converges.
+        To this end, we introduce the following result: $1/n = \sum_{k=n}^\infty 1/2^k$ for all natural numbers.
+        Let's now prove this result.
+        First note that $x_{k+1} = 1/2 * x_k$.
+        Then we have 
+    }
+\end{exercise}
+
+\end{document}
