@@ -62,7 +62,7 @@
     }
     \proof{
         We must show that $y_1, y_2, ...$ converges.
-        To this end, we introduce the following result: $1/2^n = \sum_{k=n+1}^\infty 1/2^k$.
+        To this end, we introduce the following result for any natural number $n$: $1/2^n = \sum_{k=n+1}^\infty 1/2^k$.
         Let's now prove this result.
         First note that for some natural number $a$, $1/2^{a+1} = 1/2 * 1/2^a$.
         Then for any $a$, we have
@@ -71,12 +71,12 @@
         $$1/2^a = 1/2 * (1/2^a + 1/2^{a+1} + \triplecdot) = 1/2 * 1/2^a + 1/2 * 1/2^{a+1} + \triplecdot = 1/2^{a+1} + 1/2^{a+2} + \triplecdot = \sum_{k=a+1}^\infty 1/2^k $$
         Now to show that $y_1, y_2, ...$ converges, we will show that $y_1, y_2, ...$ is Cauchy.
         So, given a natural number $n$, we must show the existence of an index $m$ such that $|y_j - y_k| \leq 1/n$ for all $j,k \geq m$.
-        For any index $m$, we can maximize $|y_j - y_k|$ by choosing the largest possible $y_j$ and the smallest possible $y_k$.
+        For any index $m$, we can provide an upper bound for $|y_j - y_k|$ by choosing the largest possible $y_j$ and the smallest possible $y_k$.
         Because $1/2^n = \sum_{k=n+1}^\infty 1/2^k$ and $x_n \leq 1/2^n$, we can say that the largest $y_j$ could be is $y_m + 1/2^{m}$ and the smallest $y_k$ could be is $y_m - 1/2^m$.
         Then
         $$|y_j - y_k| \leq |(y_m + 1/2^{m}) - (y_k - 1/2^{m})| = |2/2^m| = 1/2^{m-1} $$
         Choosing $m = n$, we can say that $1/2^{m-1} = 1/2^{n-1} \leq 1/n$ for all $n$.
-        So there exists an index $m$ such that $|y_j - y_k| \leq n$ for all $j,k \geq m$.
+        So there exists an index $m$ such that $|y_j - y_k| \leq 1/n$ for all $j,k \geq m$.
         Thus $y_1, y_2, ...$ satisfies the Cauchy criterion and must also converge.
     }
 \end{exercise}
