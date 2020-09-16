@@ -13,7 +13,18 @@
         If $x$ is a real number, show that there exists a Cauchy sequence of rationals $x_1, x_2, ...$ representing $x$ such that $x_n < x$ for all $n$.
     }
     \proof{
-
+        Pick $y_1, y_2, ...$ a Cauchy sequence of rationals with $lim_{k \to \infty} y_k = x$, we know that $\forall n \in \N, \exists m(n) \in \N$ such that $|y - y_k| < 1/n $ for all $k \geq m(n)$.
+        We will then edit the sequence $\{ y_k \}$ such that every $y_k < y$ but we will not change the limit $x$. \parspace
+        First, choose some rational number $q \in \Q$ such that $q < y$.
+        Then change the first $m(1)$ elements of $\{ y_k \}$ to have the value $q$.
+        Since the sequence is Cauchy, $m(1)$ must be finite so we have just changed a finite number of terms of $\{ y_k \}$.
+        Thus, the $lim_{k \to \infty}y_k$ did not change must still be $x$. \parspace
+        Next we construct a sequence $\{ m_k \}$ where the first $m(1)$ elements are 0, the next $m(2)$ elements are 1, the next $m(3)$ elements are $1/2$, the next $m(4)$ elements are $1/3$, and so on:
+        $$ 0, 0, ..., 0, 1, 1, ..., 1, 1/2, 1/2, ..., 1/2, 1/3, 1/3, ... 1/3, 1/4, ... $$
+        We can see that $\{ m_k \}$ is Cauchy and that $lim_{k \to \infty} m_k = 0$.
+        This implies that $lim_{k \to \infty} (y_k - m_k) = x - 0 = x$.
+        However, for each $k$, we have constructed $m_k$ such that $y_k - m_k < x$.
+        Then let $x_k = y_k - m_k$ and we have a Cauchy sequence of rationals $x_1, x_2, ...$ that represents $x$ such that $x_k < x$ for all $k \in \N$.
     }
 \end{exercise}
 
@@ -49,7 +60,8 @@
         Let's begin by noting that $lim_{k \to \infty} x_k = x \implies $ $\forall n, \exists m_a$ such that $|x_a - x| \leq 1/2n$ for all $a \geq m_a$.
         Similarly $lim_{k \to \infty} y_k = y \implies $ $\forall n, \exists m_b$ such that $|y_b - y| \leq 1/2n$ for all $b \geq m_b$.
         Choose $k = max\{ a, b \} $.
-        Then $| (x_k + y_k) - (x + y)| = |(x_k - x) + (y_k - y)| \leq 1/2n + 1/2n = 1/n$ which satisfies the definition of a limit.
+        Then $| (x_k + y_k) - (x + y)| = |(x_k - x) + (y_k - y)| \leq 1/2n + 1/2n = 1/n$.
+        So $x+y$ satisfies the definition of a limit for the sequence $\{ x_k + y_k \}$.
         Thus the limit of a sum is equal the sum of the limits.
     }
 \end{exercise}
