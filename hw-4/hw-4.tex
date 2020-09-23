@@ -21,7 +21,7 @@
 
 \begin{exercise}{3.1.3}{2}
     \problem{
-        If a bounded sequence is the sum of a monotone increasin and a monotone decreasing sequence ($x_n = y_n + z_n$ where $\{ y_n \}$ is monotone increasing and $\{ z_n \}$ is monotone decreasing), does it follow that the sequence converges? What if $\{ y_n \}$ and $\{ z_n \}$ are bounded?
+        If a bounded sequence is the sum of a monotone increasing and a monotone decreasing sequence ($x_n = y_n + z_n$ where $\{ y_n \}$ is monotone increasing and $\{ z_n \}$ is monotone decreasing), does it follow that the sequence converges? What if $\{ y_n \}$ and $\{ z_n \}$ are bounded?
     }
     \proof{
 
@@ -35,6 +35,15 @@
         Prove $\sup (A \cup B) \geq \sup A$ and $\sup (A \cap B) \leq \sup A$.
     }
     \proof{
+        We begin by proving that $\sup (A \cup B) \geq \sup A$.
+        To this end, suppose that the opposite were true: that $\sup (A \cup B ) < \sup A$.
+        By definition of $\sup$, we know $\sup A = x$ where $x$ is the smallest extended real number satisfying $a \leq x$ for all  $a \in A$.
+        We also know $\sup (A \cup B) = z$ where $z$ is the smallest extended real number satisfying $a \leq z$ for all $a \in A$ and $b \leq z$ for all $b \in B$.
+        From this, we conclude that $\sup (A \cup B) < \sup A \iff z < x$.
+        We also know $a \leq z$ for all $a$, so it must be true that $a \leq z < x$ for all $a$.
+        But we have just showed that $x$ is not the smallest extended real number satisfying $a \leq x$ for all $a$, a contradiction!
+        So it must be true that $\sup (A \cup B) \leq \sup A$. \parspace
+        Now we show that $\sup (A \cap B) \leq \sup A$.
 
     }
 \end{exercise}
@@ -46,7 +55,7 @@
         Is every subsequence of a subsequence of a subsequence also a subsequence of the sequence?
     }
     \proof{
-
+        % yes
     }
 \end{exercise}
 
