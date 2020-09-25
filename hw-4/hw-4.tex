@@ -13,7 +13,30 @@
         Compute the sup, inf, limsup, liminf, and all the limit points of the sequence $x_1, x_2, ...$ where $x_n = 1/n + (-1)^n$.
     }
     \proof{
-
+        First we compute the $\sup$.
+        To this end, we show that $3/2$ is an upper bound for $1/n + (-1)^n$ for all $n \in \N$.
+        $$ 3/2 \geq 1/n + (-1)^n \iff 3n/2 \geq 1 + n(-1)^n \geq 1 - n \iff 5n/2 \geq 1 \iff n \geq 2/5 $$
+        which is true for all natural numbers.
+        Now we must show that $3/2$ is the least upper bound for $x_n = 1/n + (-1)^n$.
+        We know this because $3/2$ is an element of the sequence: $x_2 = 1/2 + (-1)^2 = 1/2 + 1 = 3/2$. \parspace
+        Now we compute the $\inf$.
+        First we will show that $-1 \leq x_n$ for all $n \in \N$.
+        $$ -1 \leq 1/n + (-1)^n \iff -n \leq 1 + n(-1)^n \leq 1 + n \iff -n \leq 1 + n \iff n \geq -1/2 $$
+        which is true for all natural numbers.
+        No we must show that $-1$ is the greatest lower bound for $x_n$.
+        Suppose there was a lower bound $-1 + 1/k$ for some $k \in \N$.
+        But $-1 + 1/k$ cannot be a lower bound for $x_n$ since $x_{2k + 1}$ is certainly less than $-1 + 1/k$:
+        $$ x_{2k + 1} = \dfrac{1}{2k+1} + (-1)^{2k+1} = \dfrac{1}{2k+1} + -1 < -1 + 1/k \iff \dfrac{1}{2k+1} < 1/k \iff k < 2k + 1 \iff k > -1 $$
+        which is true for all natural numbers.
+        So $-1 + 1/k$ cannot be a lower bound for $x_n$, which implies that $-1$ is the greatest lower bound for the sequence. \parspace
+        Before computing $\limsup$ and $\liminf$, we will find all the limit points of $\{ x_n \}$.
+        Note that $ x_1, x_2, x_3, ... = y_1, z_1, y_2, z_2, y_3, z_3, ...$ where $ y_n = 1/(2n-1) + (-1)^{2n-1}$ and $z_n = 1/2n + (-1)^{2n}$.
+        Further $y_n = 1/(2n-1) + (-1)^{2n-1} = 1/(2n-1) + -1$ and $z_n = 1/2n + (-1)^{2n} = 1/2n + 1$.
+        Then we can say that $\lim _{n \to \infty} y_n = -1$ and $\lim _{n \to \infty} z_n = 1$.
+        Since each subsequence converges, $\{ y_n \}$ and $\{ z_n \}$ each have only one limit point.
+        Additionally, we know that $x_1, x_2, ...$ is just a shuffled sequence of $y_1, y_2, ...$ and $z_1, z_2, ...$ so the limit points of $x_1, x_2, ...$ are the limit points of $\{ y_n \}$ and $\{ z_n \}$: $-1$ and $1$. \parspace
+        For $\limsup$ and $\liminf$, we know that $\limsup$ is the $\sup$ of the set of limit points and that $\liminf$ is the $\inf$ of the set of the limit points.
+        So the $\limsup$ is $1$ and the $\liminf$ is $-1$.
     }
 \end{exercise}
 
@@ -24,7 +47,12 @@
         If a bounded sequence is the sum of a monotone increasing and a monotone decreasing sequence ($x_n = y_n + z_n$ where $\{ y_n \}$ is monotone increasing and $\{ z_n \}$ is monotone decreasing), does it follow that the sequence converges? What if $\{ y_n \}$ and $\{ z_n \}$ are bounded?
     }
     \proof{
-
+        Suppose we have a monotone increasing sequence $\{ y_n \}$ and a monotone decreasing sequence $\{ z_n \}$. Is their bounded sum $\{ x_n \} = \{ y_n + z_n \}$ necessarily convergent?
+        No.
+        Consider such sequences $ \{ y_n \} = 1, 2, 2, 3, 3, 4, 4, ...$ and $ \{ z_n \} = -1, -1, -2, -2, -3, -3, -4, ... $ with sum $ \{ x_n \} = 0, 1, 0, 1, 0, 1, 0, ...$ which has no limit. \parspace
+        If we require that $\{ y_n \}$ and $\{ z_n \}$ are bounded, then we can claim that $\{ x_n \}$ converges.
+        This is because Theorem 3.1.2 says that any bounded, monotone increasing sequence converges (and there is an analogous result for bounded, monotone decreasing sequences).
+        So $\{ y_n \}$ and $\{ z_n \}$ converge and $\{ x_n \} = \{ y_n + z_n \}$ is just the sum of two converging sequences, so $\{ x_n \}$ must also converge.
     }
 \end{exercise}
 
@@ -42,9 +70,15 @@
         From this, we conclude that $\sup (A \cup B) < \sup A \iff z < x$.
         We also know $a \leq z$ for all $a$, so it must be true that $a \leq z < x$ for all $a$.
         But we have just showed that $x$ is not the smallest extended real number satisfying $a \leq x$ for all $a$, a contradiction!
-        So it must be true that $\sup (A \cup B) \leq \sup A$. \parspace
+        So it must be true that $\sup (A \cup B) \geq \sup A$. \parspace
         Now we show that $\sup (A \cap B) \leq \sup A$.
-
+        Suppose that $\sup (A \cap B) > \sup A$.
+        By definition of $\sup$, we know $\sup (A \cap B) = x$ where $x$ is the smallest extended real number satisfying $a \leq x$ for all $a \in A$.
+        We also know that $\sup (A \cap B) = z$ where $z$ is the smallest extended real number satisfying $c \leq z$ for all $c \in C = A \cap B$.
+        Then $\sup (A \cap B) > \sup A \iff z > x$.
+        We know that $x \geq a$ and that every $c \in A$ (for $c \in A \cap B \iff c \in A \land c \in B$), so we can conlude that $z > x \geq a \geq c$.
+        But then $z$ is not the smallest extended real number satisfying $z \geq c$ (for $x$ is strictly less than $z$).
+        so we have reached a contradiction and it must be true that $\sup (A \cap B) \leq \sup A$.
     }
 \end{exercise}
 
@@ -55,7 +89,11 @@
         Is every subsequence of a subsequence of a subsequence also a subsequence of the sequence?
     }
     \proof{
-        % yes
+        Given a sequence $\{ x_n \}$ with a subsequence $\{ x_n' \}$ we must show that any $\{ x_n'' \}$ (a subsequence of $\{ x_n' \}$) is also a subsequence of $\{ x_n \}$.
+        We know every element of $\{ x_n' \}$ is an element of $\{ x_n \}$ since $\{ x_n' \}$ is obtained by crossing off elements of $\{ x_n \}$.
+        We also know that $\{ x_n'' \}$ is obtained by crossing off elements of $\{ x_n' \}$.
+        Then, we can obtain $\{ x_n'' \}$ by crossing off every element of $\{ x_n \}$ that should not be in $\{ x_n' \}$ and that should not be in $\{ x_n'' \}$.
+        Therefore, $\{ x_n'' \}$ must also be a subsequence of $\{ x_n \}$.
     }
 \end{exercise}
 
@@ -66,7 +104,13 @@
         Can there exist a sequence whose set of limit points is exactly $1, 1/2, 1/3, ...$?
     }
     \proof{
-        % no for 0 must be a limit point of any such sequence
+        There is no sequence whose set of limit points is exactly $1, 1/2, 1/3, ...$.
+        We prove this with contradiction.
+        Suppose $x_1, x_2, x_3, ...$ is a sequence whose limit points are exactly $1, 1/2, 1/3, ...$.
+        A limit point $y$ of $x_1, x_2, ...$ must satisfy the following: for all $1/n$ and $m$ there must exist some $j \geq m$ such that $| y - x_j | < 1/n$.
+        For the sake of contradiction, we assumed that any $1/a$ (for $a \in \N$) is a limit point of $x_1, x_2, ...$.
+        Then there must exist an infinite number of terms less than $1/a$ for any $a$, which is equivalent to saying that $0$ is a limit point of $x_1, x_2, ...$.
+        But this is a contradiction for we assumed that the limit points were $1, 1/2, 1/3, ...$, thus there can be no sequence whose limit points are exactly $1, 1/2, 1/3, ...$.
     }
 \end{exercise}
 
