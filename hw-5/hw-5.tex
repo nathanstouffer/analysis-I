@@ -15,7 +15,22 @@
         Is the same true if a countable number of points are removed?
     }
     \proof{
-
+        Say we have some open set $A$ and a finite set $B$ such that $B \subset A$.
+        We must show that $A \setminus B$ is still open.
+        Since $A$ is open, for every $x \in A$ there must exist an open interval $(a_x,b_x) \subset A$ such that $x \in (a_x,b_x)$.
+        Now remove the elements of $B$ from $A$, is the remainder still open?
+        For a given $x \in A \setminus B$, if no elements of $B$ were in $(a_x, b_x)$ we satisfy open with $(a_x, b_x)$.
+        If there are elements of $B$ in $(a_x, b_x)$, we must do some work.
+        Let $B_l = \{ b \in B \mid b > x\} $ and $B_s = \{ b \in B \mid b < x \}$.
+        Choose $a_x' = \max \{ a_x, \max \{ B_s \} \}$ and $b_x' = \min \{ b_x, \min \{ B_l \} \}$.
+        Then $A \setminus B$ must contain the open interval $(a_x', b_x')$ which contains $x$.
+        So every $x \in A \setminus B$ is contained in an open interval that is contained in $A \setminus B$ meaning that $A \setminus B$ is open. \parspace
+        The same statement is not true if we remove a countable number of points from an open set.
+        Consider the open set $I = (0, 1)$, which is open because it is an open interval.
+        Then remove (from $I$) every element in the sequence $x_n = n/(2n+1)$.
+        Since $x_n \to 1/2 \in I$, every neighborhood of $1/2$ will contain some element $x_n$.
+        Then there cannot exist an open interval $(a,b)$ containing $1/2$ such that $(a,b) \subset I \setminus \{ x_n \}$.
+        Therefore, $I \setminus \{ x_n \}$ is not open and we have constructed a non-open set by removing a countable number of points from an open set.
     }
 \end{exercise}
 
@@ -27,7 +42,18 @@
         Show that $x$ is a limit-point of $A$ if and only if there exists a sequence $x_1, x_2, ...$ of distinct points in $A$ that converges to $x$.
     }
     \proof{
-
+        We first suppose that $x$ is a limit-point of $A$ and we must show that there exists a sequence $x_1, x_2, ...$ of distinct points in $A$ that converges to $x$.
+        Then, by definition of limit-point for a set, for any $1/n$ there exists $y_n \in A$ and $y_n \neq x$ such that $| y_n - x | < 1/n$.
+        Then let $y_1, y_2, ...$ be a sequence of points in $A$ that satisfies $|y_n - x| < 1/n$.
+        By definition of limit, $y_1, y_2, ... \to x$ but each $y_j$ is not necessarily distinct.
+        Each duplicate must appear finitely many times by the Axiom of Archimedes so we can remove all duplicates to produce $x_1, x_2, ...$ a distinct sequence of elements of $A$ that converges to $x$. \parspace
+        Now we suppose that there exists a sequence $x_1, x_2, ...$ of distinct points in $A$ that converges to $x$.
+        We must show that $x$ is a limit-point of $A$.
+        Since the sequence $\{ x_k \}$ converges to $x$, we know that for all $n$, there exists $m$ such that for all $j \geq m$ we have $|x_j - x| < 1/n$.
+        Equivalently, there are infinitely many terms in the sequence in the neighborhood $(x - 1/n, x + 1/n)$.
+        But how do we know that the set $A$ also contains infinitely many points in every neighborhood of $x$?
+        We know this because the sequence $x_1, x_2, ...$ is distinct.
+        So we have infinitely many points of $A$ within every nieghborhood of $x$, meaning that $x$ is a limit-point of $A$.
     }
 \end{exercise}
 
@@ -39,7 +65,20 @@
         Under what conditions is $B$ closed?
     }
     \proof{
-
+        We first show that removing a single point from a set does not change the set of limit-points.
+        We know this because, for a point $y$ to be a limit-point the set $C$, we must have that every neighborhood around $y$ must contain infinitely many points of $C$.
+        Removing a single point from $C$ will not change the fact that there are infinitely many points in each neighborhood. \parspace
+        $B$ is closed if and only if $x$ is not a limit-point of $A$.
+        We prove this in two parts.
+        Going to the right, we must show that $B$ is closed implies that $x$ is not a limit-point of $A$.
+        We show this with the contrapostive: $x$ is a limit-point of $A$ implies that $B$ is not closed.
+        So we know $x$ to be limit point of $A$ and $B = A \setminus \{ x \}$.
+        $B$ has the same limit points as $A$ so $x$ is a limit-point of $B$.
+        But $x$ is not contained in $B$ so $B$ is not closed. \parspace
+        Now going to the left, we assume that $x$ is not a limit-point of $A$.
+        Since $x$ is not a limit-point of $A$, $x$ is also not a limit-point of $B$ (for $B$ has the same limit points as $A$).
+        Then $A$ contains all of its limits points (for it is closed), and $B$ must contain the same set of limit points since $x$ was not a limit point.
+        So $B$ contains all of its limit points and is closed.
     }
 \end{exercise}
 
