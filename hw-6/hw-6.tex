@@ -25,7 +25,28 @@
         Is the same true if $B_1$ and $B_2$ are not disjoint?
     }
     \proof{
-
+        Let's first analyze the case where $B_1 \cap B_2 = \emptyset$.
+        So we must show that $A \cap B_1$ is compact, that is, every sequence that lies entirely in $A \cap B_1$ has a limit-point in $A \cap B_1$.
+        To this end, pick a sequence $x_1, x_2, ...$ that lies entirely in $A \cap B_1$.
+        Every $x_j$ is a point in $A$ and $A$ is compact so $x_1, x_2, ...$ certainly has a limit-point $x$ in $A$.
+        But is $x$ a member of $B_1$?
+        Since $A \subset B_1 \cup B_2$ and $x \in A$, it must be true that $x$ is in $B_1$ or $B_2$.
+        Further, we know that $B_1 \cap B_2 = \emptyset$ so $x$ must be in only one of $B_1$ and $B_2$. \parspace
+        Suppose that $x$ is a point in $B_2$.
+        Since $B_2$ is open, there must exist an open interval $(a,b) \subset B_2$ such that $x \in (a,b)$.
+        Since $(a,b) \subset B_2$ and $B_1 \cap B_2 = \emptyset$, no elements of $B_1$ are in the interval $(a,b)$.
+        But every element in the sequence $x_1, x_2, ...$ is a member of $B_1$, so we have just shown that there exists a neighborhood $(a,b)$ of $x$ such that no element of $x_1, x_2, ...$ is contained $(a,b)$.
+        Then $x$ is not a limit-point of $x_1, x_2, ...$, but this is a contradiction since we know $x$ to be a limit-point of the sequence.
+        So $x \notin B_2$, which implies that $x \in B_1$.
+        Then $x$ (a limit-point of $x_1, x_2, ...$) is a point in both $A$ and $B_1$, which implies that $x \in A \cap B_1$.
+        Since $x_1, x_2, ...$ is an arbitrary sequence entirely in $A \cap B_1$, we have just shown that every sequence in $A \cap B_1$ has a limit-point in $A \cap B_1$.
+        In other words, we have shown that $A \cap B_1$ is compact. \parspace
+        We now wonder if $A \cap B_1$ is necessarily compact if we instead assume that $B_1 \cap B_2 \neq \emptyset$.
+        The statement does not hold; for evidence, see the following counterexample.
+        Let $B_1 = (0,2)$ and $B_2 = (1, 3)$ (open sets with a nonempty intersection).
+        Then let $A = [1,2] \subset B_1 \cup B_2$ (which is compact since $A$ is closed and bounded).
+        Then $A \cap B_1 = [1,2)$.
+        The set $A \cap B_1$ is not closed since it does not contain its limit-ponit 2, then since $A \cap B_1$ is not closed, it is not compact.
     }
 \end{exercise}
 
@@ -37,7 +58,29 @@
         Give an example of a non-compact set $A$ such that both $\sup A$ and $\inf A$ belong to $A$.
     }
     \proof{
-
+        Suppose that we have some compact set $A$, we must show that $\sup A \in A$ and $\inf A \in A$.
+        First we will show that $\sup A \in A$.
+        Let $y = \sup A$.
+        Then for all $n$, there exists some $y_n \in A$ such that $y - 1/n < y_n$.
+        Which implies that for all $n$, there exists $y_n \in A$ such that $y - y_n = |y - y_n| < 1/n$.
+        Let $y_1, y_2, ...$ be a sequence (not necessarily distinct) that satisfies $|y - y_n| < 1/n$.
+        From this, we can gather that $\{ y_n \}$ converges to $y$ (which means that $y$ is the only limit point of the sequence).
+        Then since every $y_n \in A$ and $A$ is compact, some limit-point of $y_1, y_2, ...$ is a point in $A$.
+        But we already know that $y$ is the only limit-point of $y_1, y_2, ...$, so we must have $y \in A$.
+        And $y = \sup A$ so it must be true that $\sup A \in A$. \parspace
+        Similarly, we now show that $\inf A \in A$.
+        Let $z = \inf A$.
+        Then for all $n$, there exists some $z_n \in A$ such that $z + 1/n > z_n$.
+        Which implies that for all $n$, there exists $z_n \in A$ such that $ z_n - z = |z_n - z| = |z - z_n | < 1/n$.
+        Let $z_1, z_2, ...$ be a sequence (not necessarily distinct) that satisfies $|z - z_n| < 1/n$.
+        From this, we can gather that $\{ z_n \}$ converges to $z$ (which means that $z$ is the only limit point of the sequence).
+        Then since every $z_n \in A$ and $A$ is compact, some limit-point of $z_1, z_2, ...$ is a point in $A$.
+        But we already know that $z$ is the only limit-point of $z_1, z_2, ...$, so we must have $z \in A$.
+        And $z = \inf A$ so it must be true that $\inf A \in A$. \parspace
+        We now give an example of a non-compact set $A$ such that $\sup A$ and $\inf A$ belong to $A$.
+        Let $A = [0,1) \cup (1, 2]$.
+        The set $A$ is not closed since it does not contain its limit-point 1, which means $A$ is not compact.
+        However, $\sup A = 2 \in A$ and $\inf A = 0 \in A$.
     }
 \end{exercise}
 
