@@ -8,12 +8,33 @@
 
 % hw problem 1 -----------------------------------------------------------------
 
-\begin{exercise}{3.2.3}{1}
+\begin{exercise}{3.3.1}{1}
     \problem{
         Show that compact sets are closed under arbitrary intersections and finite unions.
     }
     \proof{
-
+        First note that a set of real numbers $A$ is compact if and only if $A$ is closed and bounded.
+        Additionally, note that closed sets are closed under arbitrary intersection and finite unions. \parspace
+        We now show that compact sets are closed under arbitrary intersections.
+        Let $\B$ be any collection of compact sets and $B' = \cup _{B \in \B} B$.
+        The set $B'$ is compact if and only if it is closed and bounded.
+        Certainly $\B$ is closed since every $B \in \B$ is closed and their intersection must be closed.
+        We show that $B'$ is bounded by contradiction.
+        Suppose $B'$ is not bounded.
+        Then there exists a sequence $x_1, x_2, ...$ of elements in $B'$ such that for all $n$, there exists a $j$ such that $x_j > n$ or $x_j < -n$.
+        But sequence $x_1, x_2, ...$ must also be in every $B \in \B$ so we have just shown that every $B \in \B$ is unbounded.
+        But then no $B \in \B$ is compact, which is a contradiction.
+        Therefore $B'$ is both closed and bounded, which implies that $B'$ is compact. \parspace
+        We now show that compact sets are closed under finite unions.
+        Let $C_1, C_2, ..., C_n$ be a finite collection of compact sets and $C' = \cap _{i = 1}^n C_i$.
+        To show that $C'$ is compact, we will show that it is closed and bounded.
+        $C'$ is closed since it is the intersection of a finite collection of closed sets.
+        Is $C'$ bounded?
+        Suppose that $C'$ is not bounded, then one of two cases must occur.
+        Either there exists a monotonically increasing sequence $x_1, x_2, ...$ of elements in $C'$ such that for all $n$ there exists $j$ such that $x_j > n$ or there exists a monotonically decreasing sequence $y_1, y_2, ...$ of elements in $C'$ such that for all $n$ there exists $j$ such that $y_j < -n$.
+        In either case, we can use the pigeon hole principle to say at least one of $B_i$ contains an infinite number of terms in the sequence (whether it be increasing or decreasing).
+        But then that $B_i$ must be unbounded, which is a contradiction since we assumed every $B_i$ to be compact.
+        Therefore, the union of a finite number of compact sets must be compact.
     }
 \end{exercise}
 
