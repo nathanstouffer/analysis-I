@@ -15,7 +15,23 @@
         Must $A$ be compact?
     }
     \proof{
-        messing around on overleaf
+        We first show that $A$ is closed.
+        Given a function $f^k$, let $D_k = \{ x \mid f^k (x) = 0 \}$.
+        Then we can say that $A = \cup _{i=1}^n D_i$.
+        So $A$ is union of a finite number of sets.
+        If each $D_k$ is closed, then $A$ (a finite intersection of closed sets) must also be closed. \parspace
+        Let's now verify that every $D_k$ is closed.
+        Pick an arbitrary $D_k = \{ x \mid f^k (x) = 0 \}$.
+        Now consider the result (from exercise 4.1.5 problem 1) that a function $f$ defined on a closed domain is continuous if and only if the inverse image of every closed set is a closed set.
+        $f^k$ is a continuous function (by hypothesis) defined on the closed set $\R$, so we can equivalently say that the inverse image of every closed set is a closed set.
+        Since $\{ 0 \}$ is a closed set, the inverse image of $\{ 0 \}$ under $f^k$ is closed.
+        But the inverse image is $\{ x \mid f^k (x) = 0 \}$ which is $D_k$.
+        Therefore $D_k$ is closed which implies that $A$ is closed. \parspace
+        It is not necessarily the case that $A$ is compact.
+        We already know $A$ is necessarily closed so let's find a counterexample where $A$ is not bounded (since then $A$ will not be compact).
+        Suppose we have $f^1$ be the constant function $f^1: x \mapsto 0$.
+        Then $D_1 = \{ x \mid f^1 (x) = 0 \} = \R$ which is not bounded.
+        Therefore $A$ is not necessarily compact.
     }
 \end{exercise}
 
@@ -23,10 +39,22 @@
 
 \begin{exercise}{4.1.5}{4}
     \problem{
-        Show that the function $f(x) = x^\beta$ on $[0,1]$ for $0 < \beta \leq 1$ satisfies a Holder condition of order $\alpha$ for $0 < \alpha \leq \beta$ but not for $\alpha > \beta$.
+        Give a definition of $\lim _{x \to \infty} f(x) = y$.
+        Show that this is true if and only if for every sequence $x_1, x_2, ...$ of points in the domain of $f$ such that $\lim _{n \to \infty} x_n = + \infty $, we have $\lim _{n \to \infty} f(x_n) = y$.
     }
     \proof{
-
+        We define $\lim _{x \to \infty} f(x)$ (for functions with unbounded positive domain) to be $y \in \R$ such that for all $m$ there exists $n$ such that for all $x > n$ ($x \in \R$) we have $| y - f(x) | < 1/m$.
+        We now show that this is the case if and only if every sequence of points in the domain with a limit of $+ \infty$ has $\lim _{n \to \infty} f(x_n) = y$. \parspace
+        First suppose that $y$ is a real number such that for every $m$ there exists $n$ such that for all $x > n$ we have $| y - f(x) | < 1/m$.
+        Then we would like to show every sequence $x_1, x_2, ...$ in the domain of $f$ with $+ \infty$ as a limit has $\lim _{n \to \infty} f(x_n) = y$.
+        The sequence $x_1, x_2, ... \to +\infty$ so for every $a \in \N$ there exists an index $b$ such that for all $j \geq b$ we have $x_j > a$.
+        But then taking $a = n$ we have $|y - f(x_j)| < 1/m$ for all $j \geq n$.
+        In the limit $j \to \infty$, we have $| y - f(x) | \leq 1/m$ which satisfies $\lim _{n \to \infty} f(x_n) = y$. \parspace
+        Now suppose that every sequence of points in the domain of $f$ such that $\lim _{x \to \infty} x_n = + \infty$, we have $\lim _{n \to \infty} f(x_n) = y$.
+        We want to show that $\lim _{x \to \infty} f(x) = y$.
+        By Theorem 4.1.1, what we just said is equivalent to claiming that $\lim _{x \to \infty} f(x)$ exists.
+        Further, the theorem states that every sequence $f(x_1), f(x_2), ...$ has a common limit and that common limit the limit of the function.
+        Therefore $\lim _{x \to \infty} f(x) = y$.
     }
 \end{exercise}
 
@@ -37,7 +65,9 @@
         Give an example of a continuous function with domain $\R$ such that the inverse image of a compact set is not compact.
     }
     \proof{
-
+        Consider the example I gave in Problem 2 where $f$ is the constant function that takes every real number to 0.
+        Certainly $f$ is continuous and the compact set 0 has $\R$ for an inverse image under $f$.
+        Although $\R$ is closed, it is not bounded so $\R$ is not compact.
     }
 \end{exercise}
 
@@ -48,7 +78,11 @@
         Show that a function that satisfies a Lipschitz condition is uniformly continuous.
     }
     \proof{
-
+        Suppose we have some function $f$ such that $ | x - x_0 | < 1/Mm $ implies that $ | f(x) - f(x_0) | < 1/m$ for some constant $M$, is $f$ uniformly continuous?
+        The function $f$ is uniformly continuous if for all $m$, there exists a $n$ such that $ | x - x_0 | < 1/n$ implies that $ |f(x) - f(x_0)| < 1/m $ for all $x,x_0 \in D$ satisfying $| x - x_0 | < 1/n$.
+        From the fact that $f$ satisfies a Lipschitz condition, we can gather that $| f(x) - f(x_0) | \leq M | x - x_0 |$.
+        Then we can just take $n = Mm$ to satisfy uniform continuity: $ |f(x) - f(x_0)| < M| x - x_0 | = M*1/Mm = 1/m$.
+        Therefore $f$ must also be uniformly continuous.
     }
 \end{exercise}
 
