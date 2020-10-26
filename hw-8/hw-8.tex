@@ -10,10 +10,16 @@
 
 \begin{exercise}{4.2.4}{1}
     \problem{
-        If $f$ is monotone increasing on an interval and ahs a jump discontinuit at $x_0$ in the interior of the domain, show that the jump is bounded above by $f(x_2) - f(x_1)$ for any two points $x_1, x_2$ of the domain surrounding $x_0$, $x_1 < x_0 < x_2$.
+        If $f$ is monotone increasing on an interval and has a jump discontinuity at $x_0$ in the interior of the domain, show that the jump is bounded above by $f(x_2) - f(x_1)$ for any two points $x_1, x_2$ of the domain surrounding $x_0$, $x_1 < x_0 < x_2$.
     }
     \proof{
-
+        For some monotone increasing function $f$ defined on an interval $I$ with a jump at $x_0$ in the interior of $I$.
+        Let the height of the jump be $h = \lim _{x \to x_0^+} f(x) - \lim _{x \to x_0^-} f(x)$.
+        Now suppose we have two points $x_1, x_2 \in I$ such that $x_1 < x_0 < x_2$.
+        We want to show that $h \leq f(x_2) - f(x_1)$. \parspace
+        Since $f$ increases monotonically, we know that $f(x_1) \leq \lim _{x \to x_0^-} f(x)$ and $\lim _{x \to x_0^+} f(x) \leq f(x_2)$, which imply that $f(x_1) + \lim _{x \to x_0^+} f(x) \leq \lim _{x \to x_0^-} f(x) + f(x_2)$.
+        Equvalently, $f(x_2) - f(x_1) \geq \lim _{x \to x_0^-} f(x) - \lim _{x \to x_0^+} f(x) = h$.
+        Therefore, the jump is bounded above by $f(x_2) - f(x_1)$.
     }
 \end{exercise}
 
