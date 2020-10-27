@@ -31,7 +31,16 @@
         Give examples where the image is an open interval.
     }
     \proof{
-
+        To show this, we assume not.
+        That is, we assume that there exists some continuous function $f$ defined on an interval $I$ such that the image is not an interval.
+        Since the image is not an interval, then there exist two nonempty, distinct sets $A$ and $B$ such that $f(I) = A \cup B$ and $A \cup B$ is not an interval.
+        Let $C$ be the open interval $(\inf A \cup B, \sup A \cup B)$.
+        Then since $A \cup B$ is not an interval, there exists some number $c \in C$ that is not a member of $A \cup B$.
+        Then there exist $x_1 \neq x_2 \in I$ such that $f(x_1) < c < f(x_2)$.
+        But this directly contradicts the intermediate value theorem since $f$ is a continuous function containing the interval $[x_1, x_2]$ but does not take on every value betweeen $[f(x_1),f(x_2)]$.
+        So we have reached a contradiction and the image must be an interval. \parspace
+        Here are two examples where the image is an open interval: Consider $f(x) = x$ with domain $\R$ and $g(x) = x + 1$ with domain $(0,1)$.
+        Both images are open sets.
     }
 \end{exercise}
 
@@ -42,7 +51,12 @@
         If $f$ and $g$ are uniformly continuous, show that $f + g$ is uniformly continuous.
     }
     \proof{
-
+        So we have to uniformly continuous functions $f$ and $g$ defined on the intersections of their domains.
+        Then for all $1/2m$, there exist $1/n_1, 1/n_2$ such that for all $x,x_0$ we have $| x- x_0 | < 1/n_1$ implies $|f(x) - f(x_0)| < 1/2m$ and $|x - x_0 | < 1/n_2$ implies $|g(x) - g(x_0)| < 1/2m$.
+        Is it the case that $f + g$ is also uniformly continuous? \parspace
+        Select $|x - x_0| < 1/n = min (1/n_1, 1/n_2)$, then $|(f+g)(x) - (f + g)(x_0)| = |f(x) + g(x) - f(x_0) - g(x_0)| = |f(x) - f(x_0) + g(x) - g(x_0)|$.
+        By triangle inequality we can say that $|f(x) - f(x_0) + g(x) - g(x_0)| \leq |f(x) - f(x_0)| + |g(x) - g(x_0)| < 1/2m + 1/2m = 1/m $.
+        So for any $1/m$, we can choose $1/n = min(1/n_1, 1/n_2)$ to satsify uniform continuity for $f+g$.
     }
 \end{exercise}
 
@@ -53,7 +67,17 @@
         If $f$ is a continuous function on a compact set, show that either $f$ has a zero or $f$ is bounded away from zero ($| f(x) | > 1/n$ for all $x$ in the domain, for some $1/n$).
     }
     \proof{
-
+        So we know that $f$ is a continuous function on a compact set $D$.
+        We must show that $f(D)$ contains 0 or is bounded away from 0.
+        We know that continuous functions map compact sets to compact sets.
+        Therefore $f(D)$ is a compact set.
+        If $0 \in f(D)$ then we are done.
+        If $0 \notin f(D)$, then suppose that $f$ is not bounded away from 0.
+        Then there exists a sequence $f(x_1), f(x_2), ...$ such that for all $1/n$ there exists $m$ such that for $j \geq m$ we have $|f(x_j) - 0| < 1/n $.
+        Then $f(x_1), f(x_2), ...$ converges to $0$.
+        And $f(D)$ is compact so $f(D)$ must contain 0 (since it is the only limit point of the sequence).
+        But now we have reached a contradiction since we assumed $0 \notin f(D)$.
+        Therefore, if $0 \notin f(D)$ then $f$ is bounded away from 0.
     }
 \end{exercise}
 
