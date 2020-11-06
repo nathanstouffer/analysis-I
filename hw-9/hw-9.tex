@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+
+\usepackage{../analysis}
+
+\begin{document}
+
+\coverpage{9}
+
+% hw problem 1 -----------------------------------------------------------------
+
+\begin{exercise}{5.1.3}{1}
+    \problem{
+        Show that $f(x) = O(|x - x_0| ^ 2)$ as $x \to x_0$ implies $f(x) = o(|x - x_0 |)$ as $x \to x_0$, but give an example to show that the converse is not true.
+    }
+    \proof{
+        So we know that $f(x) = O(|x - x_0|^2)$ as $x \to x_0$ and we want to show that $f(x) = o(|x - x_0|)$ as $x \to x_0$.
+        Equivalently, we could show that $\lim _{x \to x_0} f(x) / |x - x_0| = 0 $.
+        From the definition of Big-O, we can say that as $x \to x_0$, there exists $1/n$ and a positive constant $c$ such that $|x - x_0| < 1/n$ implies that  $|f(x)| \leq c * |x - x_0| ^2 $.
+        Then for the same neighborhood $(x_0 - 1/n, x_0 + 1/n)$, we must have $|f(x)|/|x - x_0| \leq c * |x -x_0|$.
+        And $\lim _{x \to x_0} |f(x)| / |x - x_0| \leq \lim _{x \to x_0} c * |x - x_0| = 0$ for $x \neq x_0$.
+        Since $\lim _{x \to x_0} |f(x)| / |x - x_0|$ cannot be negative, it must equal 0.
+        Then $f(x) = o(|x - x_0|)$ as $x \to x_0$, which was the goal. \parspace
+        TODO: provide counterexample for the converse
+    }
+\end{exercise}
+
+% hw problem 2 -----------------------------------------------------------------
+
+\begin{exercise}{5.2.4}{1}
+    \problem{
+        Let $f$ and $g$ be continuous functions on $[a,b]$ and differentiable at every point in the interior, with $g(a) \neq g(b)$.
+        Prove that there exists a point $x_0$ in $(a,b)$ such that
+        $$ \dfrac{f(b) - f(a)}{g(b) - g(a)} = \dfrac{f'(x_0)}{g'(x_0)} $$
+    }
+    \proof{
+        Let's begin by defining $H(x) = (f(b) - f(a))*g(x) - (g(b) - g(a)) * f(x)$.
+        Now let $F = f(b) - f(a)$ and $G = g(b) - g(a)$.
+        Then note that
+        $$H(b) - H(a) = (F*g(b) - G * f(b))  - (F*g(a) - G*f(a)) = F*G - G*F = 0$$
+        Then since $f$ and $g$ both satisfy the conditions for the mean value theorem, so must $H(x)$ (a linear combination of $f$ and $g$).
+        So there must exist $x_0 \in (a,b)$ such that
+        $$H'(x_0) = \dfrac{H(b) - H(a)}{b - a}$$
+        But since $H(b) - H(a) = 0$ and $b \neq a$, we must have $H'(x_0) = 0$ for some $x_0 \in (a,b)$.
+        Then $F*g'(x_0) - G*f'(x_0) = (f(b) - f(a))*g'(x_0) - (g(b) - g(a))*f'(x_0) = 0$.
+        Then we must have $(f(b) - f(a))*g'(x_0) = (g(b) - g(a))*f'(x_0)$.
+        We already know $g(b) - g(a) \neq 0$ and if we assume that $g'(x) \neq 0$ for $x \in (a,b)$, then we get the desired result for some $x_0 \in (a,b)$:
+        $$ \dfrac{f(b) - f(a)}{b - a} = \dfrac{f'(x_0)}{g'(x_0)} $$
+    }
+\end{exercise}
+
+% hw problem 3 -----------------------------------------------------------------
+
+\begin{exercise}{5.2.4}{2}
+    \problem{
+        If $f$ is a function satisfying
+        $$ | f(x) - f(y)| \leq M |x - y|^\alpha $$
+        for all $x$ and $y$ and some fixed point $M$ and $\alpha > 1$, prove that $f$ is constant.
+    }
+    \proof{
+        Let $y = x_0$ be a real number and take $x \neq x_0$.
+        To show that $f$ is constant, we will show that $f'(x_0)$ exists and equals 0.
+        We know that for some fixed $M$ and another fixed $\alpha > 1$ that $| f(x) - f(x_0) | \leq M |x - x_0|^\alpha $.
+        Since $x \neq x_0$ and $\alpha - 1 > 0$, we must also have
+        $$ \dfrac{|f(x) - f(x_0)|}{|x - x_0|} = \left| \dfrac{f(x)-f(x_0)}{x-x_0} - 0 \right| \leq M |x - x_0|^{\alpha-1} $$
+        Then we just choose $|x - x_0| < 1/(Mm)^{1/(\alpha - 1)}$ and we have exactly that $f'(x_0) = 0$.
+        Since the derivative at an arbitrary $x_0$ is 0, the function $f$ must be constant.
+    }
+\end{exercise}
+
+% hw problem 4 -----------------------------------------------------------------
+
+\begin{exercise}{5.2.4}{3}
+    \problem{
+        Is the converse of the mean value theorem ture, in the sense that if $f$ is continuous on $[a,b]$ and differentiable on $(a,b)$, given a point $x_0$ in $(a,b)$ must there exists points $x_1, x_2$ in $[a,b]$ such that
+        $$ \dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(x_0) $$
+    }
+    \proof{
+
+    }
+\end{exercise}
+
+\end{document}
