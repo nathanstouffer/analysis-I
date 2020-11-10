@@ -15,12 +15,21 @@
     \proof{
         So we know that $f(x) = O(|x - x_0|^2)$ as $x \to x_0$ and we want to show that $f(x) = o(|x - x_0|)$ as $x \to x_0$.
         Equivalently, we could show that $\lim _{x \to x_0} f(x) / |x - x_0| = 0 $.
-        From the definition of Big-O, we can say that as $x \to x_0$, there exists $1/n$ and a positive constant $c$ such that $|x - x_0| < 1/n$ implies that  $|f(x)| \leq c * |x - x_0| ^2 $.
+        From the definition of big-O, we can say that as $x \to x_0$, there exists $1/n$ and a positive constant $c$ such that $|x - x_0| < 1/n$ implies that  $|f(x)| \leq c * |x - x_0| ^2 $.
         Then for the same neighborhood $(x_0 - 1/n, x_0 + 1/n)$, we must have $|f(x)|/|x - x_0| \leq c * |x -x_0|$.
-        And $\lim _{x \to x_0} |f(x)| / |x - x_0| \leq \lim _{x \to x_0} c * |x - x_0| = 0$ for $x \neq x_0$.
+        And since non-strict inequalities are preserved by limits, $\lim _{x \to x_0} |f(x)| / |x - x_0| \leq \lim _{x \to x_0} c * |x - x_0| = 0$ for $x \neq x_0$.
         Since $\lim _{x \to x_0} |f(x)| / |x - x_0|$ cannot be negative, it must equal 0.
         Then $f(x) = o(|x - x_0|)$ as $x \to x_0$, which was the goal. \parspace
-        TODO: provide counterexample for the converse
+        A counterexample of the converse is $f(x) = |x - x_0|^{3/2}$.
+        Certainly $|x - x_0|^{3/2} = o(|x - x_0|)$ since
+        $$\lim _{x \to x_0}\dfrac{|x - x_0|^{3/2}}{|x - x_0|} = \lim _{x \to x_0} |x - x_0|^{1/2} = 0 $$
+        But, we do not have $|x - x_0|^{3/2} = O(|x - x_0|^2)$.
+        To verify this, let's unpack the definition of big-O.
+        $|x - x_0|^{3/2} = O(|x - x_0|^2)$ only if for all $1/n$ there exists a positive constant $c$ such that $|x - x_0| < 1/n$ implies that $|x - x_0|^{3/2} \leq c |x - x_0|^2$.
+        Then for $x \neq x_0$ (which is trivially true), we must have $1 \leq c |x - x_0|^{1/2}$.
+        However, this condition fails if $|x - x_0|^{1/2} < 1/c$.
+        But since we are considering a neighborhood of $x_0$, the value of $|x - x_0|^{1/2}$ can be made arbitrarily small with an appropriate choice of $x$.
+        So no $c$ exists to staisfy the definition of big-O and we have found a counterexample to the converse.
     }
 \end{exercise}
 
@@ -57,13 +66,14 @@
         for all $x$ and $y$ and some fixed point $M$ and $\alpha > 1$, prove that $f$ is constant.
     }
     \proof{
-        Let $y = x_0$ be a real number and take $x \neq x_0$.
+        Note that the domain of $f$ is the real number line.
+        Then let $y = x_0$ be a real number and take $x \neq x_0$ (every function satisfies the inequality for $x = x_0$).
         To show that $f$ is constant, we will show that $f'(x_0)$ exists and equals 0.
         We know that for some fixed $M$ and another fixed $\alpha > 1$ that $| f(x) - f(x_0) | \leq M |x - x_0|^\alpha $.
         Since $x \neq x_0$ and $\alpha - 1 > 0$, we must also have
-        $$ \dfrac{|f(x) - f(x_0)|}{|x - x_0|} = \left| \dfrac{f(x)-f(x_0)}{x-x_0} - 0 \right| \leq M |x - x_0|^{\alpha-1} $$
+        $$ \dfrac{|f(x) - f(x_0)|}{|x - x_0|} = \left| \dfrac{f(x) - f(x_0)}{x - x_0} \right| = \left| \dfrac{f(x)-f(x_0)}{x-x_0} - 0 \right| \leq M |x - x_0|^{\alpha-1} $$
         Then we just choose $|x - x_0| < 1/(Mm)^{1/(\alpha - 1)}$ and we have exactly that $f'(x_0) = 0$.
-        Since the derivative at an arbitrary $x_0$ is 0, the function $f$ must be constant.
+        Since the derivative at an arbitrary $x_0$ is 0, the derivative is 0 everywhere and the function $f$ must be constant.
     }
 \end{exercise}
 
@@ -75,7 +85,13 @@
         $$ \dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = f'(x_0) $$
     }
     \proof{
-
+        The converse of the mean value theorem is not true.
+        Consider the counterexample $f(x) = x^3$ defined on $[-1,1]$ and take $x_0 = 0$.
+        Then we must show that the exist no $x_1, x_2 \in [a,b]$ that satisfy
+        $$ \dfrac{f(x_2) - f(x_1)}{x_2 - x_1} = 0 $$
+        Without loss of generality, take $x_2 > x_1$.
+        Then the above equality is only true if $f(x_2) = f(x_1)$ but this can never occur since $f(x) = x^3$ increases monotonically so $f(x_2) > f(x_1)$.
+        So we have found a counterexample to the converse of the mean value theorem.
     }
 \end{exercise}
 
