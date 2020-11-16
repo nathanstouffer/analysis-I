@@ -47,11 +47,35 @@
 
 \begin{exercise}{5.2.4}{1}
     \problem{
-        Suppose $f'(x_0) = 0, f''(x_0) = 0, ... f^{n-1} (x_0) = 0$ and $f^(n)(x_0) > 0$ for a $C^n$ function $f$.
+        Suppose $f'(x_0) = 0, f''(x_0) = 0, ... f^{n-1} (x_0) = 0$ and $f^{(n)}(x_0) > 0$ for a $C^n$ function $f$.
         Prove that $f$ has a local minimum at $x_0$ if $n$ is even and that $x_0$ is neither a local maximum nor a local minimum if $n$ is odd.
     }
     \proof{
-
+        As in the textbook, let
+        $$T_n(x) = f(x_0) + f'(x_0)(x - x_0) + \dfrac{1}{2!} f''(x_0)(x - x_0)^2 + \triplecdot + \dfrac{1}{n!} f^{(n)}(x_0)(x - x_0)^n $$
+        But since $f'(x_0) = f''(x_0) = \triplecdot = f^{(n-1)}(x_0) = 0$, we have $T_n (x) = f(x_0) + \dfrac{1}{n!} f^{(n)}(x_0)(x - x_0)^n$.
+        Then, by Taylor's Theorem, we must have
+        $$f - T_n = o(|x - x_0|^n) \iff \lim _{x \to x_0} \dfrac{f - T_n}{|x - x_0|^n}
+        = 0 $$
+        which is equivalent to
+        $$ \lim _{x \to x_0} \dfrac{f(x) - f(x_0) - 1/n! * f^{(n)}(x_0)(x - x_0)^n}{|x - x_0|^n} = 0 $$
+        and to
+        $$ \lim _{x \to x_0} \dfrac{f(x) - f(x_0)}{|x - x_0|^n} = \lim _{x \to x_0} \dfrac{1/n! * f^{(n)}(x_0)(x - x_0)^n}{|x - x_0|^n} $$
+        The LHS looks like the derivative at $x_0$, note that it is slightly different because of the absolute value in the denominator.
+        We now consider the two cases where $n$ is even and $n$ is odd.
+        If $n$ is even then $|x - x_0|^n = (x - x_0)^n$ and we have
+        $$ \lim _{x \to x_0} \dfrac{f(x) - f(x_0)}{|x - x_0|^n} = 1/n! * f^{(n)}(x_0) > 0 $$
+        But then since $| x - x_0 |^n$ is strictly positive, we must have $f(x) > f(x_0)$ to satisfy the equality as $x \to x_0$ and $x \neq x_0$.
+        Then there must exist a neighborhood of $x_0$ such that $f(x) > f(x_0)$ for all $x \neq x_0$ in the neighborhood.
+        But then $f$ has a strict local minimum at $x_0$ as desired. \parspace
+        Now consider the case where $n$ is odd.
+        Then $|x - x_0|^n = (x - x_0)^n$ for $x > x_0$ and $|x - x_0|^n = - (x - x_0)^n$ fro $x < x_0$.
+        So for $x < x_0$, we must have
+        $$ \lim _{x \to x_0^-} \dfrac{f(x) - f(x_0)}{|x - x_0|^n} = - 1/n! * f^{(n)}(x_0) < 0 $$
+        which means $f(x) < f(x_0)$ for $x < x_0$ in a neighborhood of $x_0$.
+        And for $x > x_0$, we can use the logic from the even case of $n$ to show that $f(x) > f(x_0)$ in a neighborhood of $x_0$. \parspace
+        So we have just shown that, for some neighborhood of $x_0$, $f(x)$ is strictly less than $f(x_0)$ when $x < x_0$ and $f(x)$ is strictly greater than $f(x_0)$ when $x > x_0$.
+        Therefore, $x_0$ cannot be either of a local minimum or a local maximum.
     }
 \end{exercise}
 
